@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .partners-wrap {
+            background-color: #060606;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            padding-top: 60px;
+            padding-bottom: 60px;
+        }
+
+        .partners {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 1140px;
+            margin: auto;
+        }
+
+        .partners__item {
+            padding: 0 22px 23px 22px;
+            border-right: 2px solid #FFFFFF;
+            border-bottom: 2px solid #FFFFFF;
+        }
+
+        .partners__item_no-b-r {
+            border-right: none;
+        }
+
+        .partners__item_no-b-b {
+            border-bottom: none;
+            padding-top: 22px;
+            padding-bottom: 0;
+        }
+
+        .partners__item-img {
+            opacity: 0.7;
+            transition: opacity 0.5s ease;
+        }
+
+        .partners__item-img:hover {
+            opacity: 1;
+        }
+
+        .img-hide {
+            opacity: 0 !important;
+        }
+
+        @media screen and (max-width: 1150px) {
+            .partners {
+                max-width: 600px;
+            }
+
+            .partners__item {
+                padding: 18px 0;
+                border: none;
+                border-bottom: 1px solid #fff;
+                border-right: 1px solid #fff;
+            }
+
+            .partners__item-img {
+                width: 100%;
+            }
+
+            .partners__item:nth-child(even) {
+                border-right: none;
+            }
+
+            .partners__item:last-child {
+                border-bottom: none;
+            }
+
+            .partners__item:nth-last-child(-n+2) {
+                border-bottom: none;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .partners {
+                max-width: 350px;
+            }
+
+            .partners__item {
+                max-width: 173px;
+            }
+        }
+    </style>
+    <div class="partners-wrap">
+        <div class="partners">
+            <div class="partners__item">
+                <img src="" class="partners__item-img" />
+            </div>
+            <div class="partners__item">
+                <img src="" class="partners__item-img" />
+            </div>
+            <div class="partners__item">
+                <img src="" class="partners__item-img" />
+            </div>
+            <div class="partners__item partners__item_no-b-r">
+                <img src="" class="partners__item-img" />
+            </div>
+            <div class="partners__item partners__item_no-b-b">
+                <img src="" class="partners__item-img" />
+            </div>
+            <div class="partners__item partners__item_no-b-b">
+                <img src="" class="partners__item-img" />
+            </div>
+            <div class="partners__item partners__item_no-b-b">
+                <img src="" class="partners__item-img" />
+            </div>
+            <div class="partners__item partners__item_no-b-b partners__item_no-b-r">
+                <img src="" class="partners__item-img" />
+            </div>
+        </div>
+    </div>
+    <script>
+        const partners_data = [
+            {
+                url: "https://static.tildacdn.com/tild3939-6430-4732-b630-373139396565/1.svg",
+            },
+            {
+                url: "https://static.tildacdn.com/tild3332-3363-4361-b564-393838626533/2.svg"
+            },
+            {
+                url: "https://static.tildacdn.com/tild6237-3334-4563-a537-636638346437/3.svg"
+            },
+            {
+                url: "https://static.tildacdn.com/tild6564-3732-4336-b032-303536656631/4.svg"
+            },
+            {
+                url: "https://static.tildacdn.com/tild6237-3334-4563-a537-636638346437/3.svg"
+            },
+            {
+                url: "https://static.tildacdn.com/tild6564-3732-4336-b032-303536656631/4.svg"
+            },
+            {
+                url: "https://static.tildacdn.com/tild6638-3935-4361-b736-643235393733/5.svg"
+            },
+            {
+                url: "https://static.tildacdn.com/tild6165-3639-4837-b937-653131363031/6.svg"
+            }
+
+        ]
+
+        const partners = document.querySelectorAll(".partners__item-img")
+        partners.forEach(((element, index) => {
+            element.src = partners_data[index].url
+        }))
+
+        setInterval(() => {
+            const data = partners_data
+            data.unshift(data.pop())
+
+            partners.forEach(((element) => {
+                element.classList.toggle("img-hide")
+            }))
+
+            setTimeout(() => {
+                partners.forEach(((element, index) => {
+                    element.src = data[index].url
+                    element.classList.toggle("img-hide")
+                }))
+            }, 500)
+
+            // partners.forEach(((element) => {
+            //     element.classList.toggle("img-hide")
+            // }))
+
+
+        }, 2000)
+    </script>
+</body>
+
+</html>
